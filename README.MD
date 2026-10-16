@@ -1,51 +1,80 @@
-# ISLAND HOPPER
+# Island Hopper
 ### Airport Route Optimization with Python
 
-## Introduction
-Island Hopper is a Python project that uses airport data, graph theory, and route-finding algorithms to explore routes between airports. The initial journey connects Milan Malpensa (MXP) to Sydney (SYD).
+## Overview
 
-## The Actual Problem
-Given a network of airports and possible connections, how can we find a route between two destinations with the minimum total geographic distance?
+Island Hopper is a Python project that explores how airports can be connected in a network and how graph algorithms can help find routes between destinations. The initial case study is a journey from Milan Malpensa Airport (MXP) to Sydney Airport (SYD).
+
+## Problem Statement
+
+Can a journey from a chosen starting airport to a destination airport be completed within the project’s flight constraints? The planned system will compare possible routes, estimate travel time and stops, and identify airports reachable within a maximum of 10 stops.
 
 ## Constraints
-- Only medium and large airports are considered.
-- Routes depend on the airport connections defined in the project.
-- Distances are estimated using geographic coordinates, not actual flight paths.
-- The shortest-distance route may not be the fastest, cheapest, or a real bookable flight.
+
+- Only medium and large airports are included.
+- Each possible flight leg must be within a configurable aircraft range.
+- Estimated flight time is calculated at 500 km/h.
+- Each intermediate refuelling stop adds 1 hour.
+- A configurable customs delay applies when crossing country borders.
+- Distances are calculated from airport coordinates using the Haversine formula. They are geographic estimates, not actual flight paths.
 
 ## Tech Stack
+
 - **Python** — core development
 - **Pandas** — data cleaning and processing
 - **Graph Theory** — airport network modelling
-- **BFS and DFS** — graph traversal
-- **Dijkstra's Algorithm** — shortest-distance routing
-- **Streamlit** — interactive dashboard
-- **Visualisation Tools** — route and data display
+- **BFS and DFS** — planned graph traversal and route exploration
+- **Dijkstra’s Algorithm** — planned route optimization using weighted distances or travel times
+- **Streamlit** — planned interactive dashboard
+- **Git and GitHub** — version control
 
-## Development Phases
-1. **Data Preparation** — clean and validate airport data.
-2. **Distance Calculation** — calculate geographic distances.
-3. **Graph Construction** — model airports and connections.
-4. **Route Optimization** — implement BFS, DFS, and Dijkstra's algorithm.
-5. **Dashboard** — visualise routes and results using Streamlit.
+## Progress So Far
+
+### Completed
+- Loaded and inspected the original `Data/airports.csv` dataset (86,153 rows and 19 columns).
+- Filtered the data to medium and large airports.
+- Selected the required airport identifiers and location fields.
+- Checked coordinates and removed airports with missing latitude or longitude.
+- Saved the cleaned dataset as `Data/cleaned_airports.csv` (5,281 airports, 10 columns).
+- Implemented the Haversine distance calculation.
+- Calculated the estimated geographic distance from MXP to SYD: **16,591.87 km**.
+- Checked the distance calculation for the same airport as both origin and destination: **0 km**.
+
+### In Progress / Planned
+1. Validate and use a source of airport-to-airport flight connections, or clearly define simulated connections if required.
+2. Build the airport graph using the aircraft-range constraint.
+3. Implement BFS, DFS, and Dijkstra’s algorithm for route search and optimization.
+4. Apply flight-time, refuelling, customs, and stop-count constraints.
+5. Test reachable and unreachable journeys, then build a Streamlit dashboard with route results and visualizations.
+
+**Current stage:** Airport data preparation and geographic distance calculation. Graph construction, route-finding algorithms, and the dashboard are not yet complete.
 
 ## Project Structure
+
 ```text
-island-hoppers/
+island-hopper/
 ├── Data/
 │   ├── airports.csv
 │   └── cleaned_airports.csv
 ├── src/
-│   └── data_loader.py
+│   ├── data_loader.py
+│   └── distance.py
 ├── .gitignore
 └── README.md
 ```
 
-## Current Status
-**Phase 1 — Data Preparation**
+*The file list above reflects the expected files used so far; update it if the repository structure changes.*
 
-The original dataset contains 86,153 records. Filtering for medium and large airports leaves 5,281 records. Column selection, coordinate validation, and duplicate checks are complete. Final dataset saving and subsequent routing phases remain in progress.
+## Run
 
----
+Run commands from the project root. The exact command depends on the current script entry point.
 
-*Python · Graphs · Algorithms · Route Discovery*
+Install the main data-processing dependency:
+
+```bash
+pip install pandas
+```
+
+## Project Goal
+
+Build a working, testable airport route-finding application that combines data cleaning, geographic distance calculations, graph algorithms, and an interactive dashboard.
