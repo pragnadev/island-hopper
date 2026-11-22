@@ -1,0 +1,17 @@
+
+SPEED_KMH = 500
+REFUEL_H = 1.0
+CUSTOMS_H = 2.0
+
+RANGE_KM = 4000
+MAX_STOPS = 10
+
+EARTH_RADIUS_KM = 6371.0
+
+ALLOWED_AIRPORT_TYPES = [
+    "medium_airport",
+    "large_airport"
+]
+
+DEFAULT_ORIGIN = "MXP"
+DEFAULT_DESTINATION = "SYD"
